@@ -13,7 +13,7 @@ This is the documentation for the backend assignment application.
 2. Navigate to the project directory:
 
     ```bash
-    cd backend-assignment
+    cd TravelAgency
     ```
 
 3. Install the dependencies:
