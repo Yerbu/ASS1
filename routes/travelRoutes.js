@@ -25,16 +25,13 @@ async function showTour() {
 
         console.log(`Selected City: ${city}`);
 
-        // Fetch weather information for the selected city
         const response = await fetch(`/getWeather?city=${city}`);
         const weatherData = await response.json();
 
         console.log('Weather Data:', weatherData);
 
-        // Display temperature
         document.getElementById('weather-temperature').innerText = weatherData.main.temp.toFixed(1);
 
-        // Display weather conditions with icon
         const weatherConditions = weatherData.weather[0].description;
         const weatherIcon = weatherData.weather[0].icon;
         const weatherIconUrl = `https://openweathermap.org/img/w/${weatherIcon}.png`;
@@ -52,18 +49,15 @@ async function showTour() {
         const tourCard = document.createElement('div');
         tourCard.className = 'tour';
 
-        // Tour Information
         const tourDates = getTourDates(city);
         const tourDuration = getTourDuration(city);
         const tourDescription = getTourDescription(city);
         const tourDetails = getTourDetails(city);
         const tourPrice = getTourPrice(city);
 
-        // Create a container for text content
         const textContainer = document.createElement('div');
         textContainer.className = 'text-container';
 
-        // Append text content to the text container
         textContainer.innerHTML = `
             <h3 class="tour-title">${city}</h3>
             <p class="tour-info tour-dates">Dates: ${tourDates}</p>
@@ -74,16 +68,13 @@ async function showTour() {
             <button class="btn btn-success" onclick="bookTour('${city}')">Book Now</button>
         `;
 
-        // Append the text container to the tour card
         tourCard.appendChild(textContainer);
 
-        // Add an image element
         const tourImage = document.createElement('img');
         tourImage.src = getTourImage(city);
         tourImage.alt = `${city} Image`;
         tourImage.className = 'city-image';
 
-        // Append image to the tour card
         tourCard.appendChild(tourImage);
 
         toursContainer.appendChild(tourCard);
@@ -94,12 +85,10 @@ async function showTour() {
     }
 }
 
-// Function to filter tours based on unique descriptions
 function filterTours() {
     const showUniqueDescriptionOnly = document.getElementById('uniqueDescriptionCheckbox').checked;
     const toursContainer = document.querySelector('.tours-container');
 
-    // Filter tours based on unique descriptions
     const uniqueTours = showUniqueDescriptionOnly
         ? Array.from(toursContainer.children).filter((tour) => {
             const description = tour.querySelector('.tour-description').innerText;
@@ -107,12 +96,10 @@ function filterTours() {
         })
         : Array.from(toursContainer.children);
 
-    // Clear existing tours and display filtered tours
     toursContainer.innerHTML = '';
     uniqueTours.forEach((tour) => toursContainer.appendChild(tour));
 }
 
-// Mock function for tour dates
 function getTourDates(city) {
     switch (city) {
         case 'Astana':
@@ -130,7 +117,6 @@ function getTourDates(city) {
     }
 }
 
-// Mock function for tour duration
 function getTourDuration(city) {
     switch (city) {
         case 'Astana':
@@ -148,7 +134,6 @@ function getTourDuration(city) {
     }
 }
 
-// Mock function for tour description
 function getTourDescription(city) {
     switch (city) {
         case 'Astana':
@@ -166,7 +151,6 @@ function getTourDescription(city) {
     }
 }
 
-// Mock function for tour details
 function getTourDetails(city) {
     switch (city) {
         case 'Astana':
@@ -184,7 +168,6 @@ function getTourDetails(city) {
     }
 }
 
-// Mock function for tour price
 function getTourPrice(city) {
     switch (city) {
         case 'Astana':
@@ -198,27 +181,23 @@ function getTourPrice(city) {
         case 'Sydney':
             return 2099;
         default:
-            return 0; // Return a default value (you can adjust as needed)
+            return 0; 
     }
 }
 
 function bookTour(city) {
-    // Additional logic for booking, e.g., opening the modal
     $('#bookingModal').modal('show');
 
-    // Calculate and display total price in the modal
     const adults = parseInt(document.getElementById('adults').value);
     const children = parseInt(document.getElementById('children').value);
     const totalPrice = calculateTotalPrice(city, adults, children);
     document.getElementById('totalPrice').innerText = `$${totalPrice.toFixed(2)}`;
     $('#bookingModal').modal('show');
 
-    // Update total price when the modal is displayed
     updateTotalPrice();
 }
 
 function calculateTotalPrice(city) {
-    // Mock calculation: Price * (Number of adults + Number of children * 0.5)
     const adults = parseInt(document.getElementById('adultsQuantity').value) || 0;
     const children = parseInt(document.getElementById('childrenQuantity').value) || 0;
     const price = getTourPrice(city);
@@ -231,7 +210,6 @@ function updateTotalPrice() {
     const adultsInput = document.getElementById('adultsQuantity');
     const childrenInput = document.getElementById('childrenQuantity');
 
-    // Ensure valid integer values for adults and children
     const adults = parseInt(adultsInput.value, 10) || 0;
     const children = parseInt(childrenInput.value, 10) || 0;
 
@@ -248,10 +226,6 @@ function updateTotalPrice() {
 }
 
 function confirmBooking() {
-    // Additional logic for confirming the booking, e.g., sending data to the server
-    // ...
-
-    // Close the modal after confirmation
     $('#bookingModal').modal('hide');
 }
 
