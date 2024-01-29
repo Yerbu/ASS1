@@ -7,13 +7,13 @@ This is the documentation for the backend assignment application.
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/backend-assignment.git
+    git clone https://github.com/Yerbu/https://github.com/Yerbu/ASS1.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd TravelAgencyApp
+    cd ASS1
     ```
 
 3. Install the dependencies:
