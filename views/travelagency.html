@@ -10,7 +10,6 @@
     <script src="/routes/travelRoutes.js"></script>
 
     <style>
-        /* Additional styles for icons and images */
         .weather-icon {
             width: 50px;
             height: 50px;
@@ -19,7 +18,6 @@
         .text-container {
             flex: 1;
             padding-right: 20px;
-            /* Adjust as needed to create space between text and image */
         }
 
         .weather-info i {
@@ -47,11 +45,9 @@
             transform: scale(1.1);
         }
 
-        /* Additional styles for tours */
         .tour {
             display: flex;
             align-items: center;
-            /* Center items vertically */
             border: 1px solid #dee2e6;
             border-radius: 10px;
             margin-top: 20px;
@@ -101,7 +97,6 @@
                 <h1 class="card-title">Explore Our Tours</h1>
                 <p class="card-text">Choose from a variety of destinations and plan your perfect getaway.</p>
 
-                <!-- Modify the form element to include an on change event -->
                 <form id="travelAgencyForm">
                     <div class="form-group">
                         <label for="cityDropdown">Select City:</label>
@@ -113,11 +108,9 @@
                             <option value="Sydney">Sydney</option>
                         </select>
                     </div>
-                    <!-- ... (existing form elements) -->
 
                 </form>
 
-                <!-- Display Weather Information -->
                 <div class="mt-4" id="weather-info" style="display: none;">
                     <h2>Weather Information</h2>
                     <div class="weather-info">
@@ -127,11 +120,8 @@
                     </div>
                 </div>
 
-                <!-- Display Tours -->
                 <div class="tours-container mt-4">
-                    <!-- Tour Information will be dynamically added here -->
                 </div>
-                <!-- Modal for Booking -->
                 <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog"
                     aria-labelledby="bookingModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
